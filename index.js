@@ -72,7 +72,7 @@ app.post("/bot/:botid", (req, res) => {
         if (err) {
           console.log('Error: ', err)
         }
-        console.log('response', response);
+        // console.log('response', response);
         console.log("Message sent.");
       })
     }
