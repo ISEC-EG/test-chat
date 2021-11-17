@@ -69,7 +69,7 @@ app.post("/bot/:botid", (req, res) => {
       }
       console.log('msg: ', msg);
       console.log('cbclient.tiledeskClient.sendMessage: ', cbclient.tiledeskClient.sendMessage);
-      cbclient.tiledeskClient.sendMessage(msg, function (err) {
+      cbclient.tiledeskClient.sendMessage('11', reply_text, function (err) {
         if (err) {
           console.log('Error: ', err)
         }
