@@ -57,7 +57,7 @@ app.post("/bot/:botid", (req, res) => {
   const credentials = JSON.parse(process.env[botid])
   runDialogflowQuery(cbclient.text, dialogflow_session_id, lang, credentials)
   .then(function(result) {
-    // console.log("query result: ", JSON.stringify(result))
+    console.log("query result: ", JSON.stringify(result))
     console.log("is fallback:", result.intent.isFallback)
     console.log("confidence:", result.intentDetectionConfidence)
     // intentDetectionConfidence
@@ -67,9 +67,10 @@ app.post("/bot/:botid", (req, res) => {
       var msg = {
         "text": reply_text
       }
-      console.log('msg: ', msg);
-      console.log('cbclient.tiledeskClient.sendMessage: ', cbclient.tiledeskClient.sendMessage);
-      cbclient.tiledeskClient.sendMessage('11', reply_text, function (err) {
+
+      cbclient.tiledeskClient.sendMessage('11', msg, function (err, response, resbody) {
+        console.log('response', response);
+        console.log('resbody', resbody);
         if (err) {
           console.log('Error: ', err)
         }
