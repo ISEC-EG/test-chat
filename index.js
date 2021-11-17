@@ -61,19 +61,19 @@ app.post("/bot/:botid", (req, res) => {
     console.log("is fallback:", result.intent.isFallback)
     console.log("confidence:", result.intentDetectionConfidence)
     // intentDetectionConfidence
-    console.log('Status', res.statusCode)
 
     if(res.statusCode === 200) {
-      console.log('HERERER');
       const reply_text = result['fulfillmentText']
       var msg = {
         "text": reply_text
       }
+      console.log('msg: ', msg);
+      console.log('cbclient.tiledeskClient.sendMessage: ', cbclient.tiledeskClient.sendMessage);
       cbclient.tiledeskClient.sendMessage(msg, function (err) {
-        console.log("Message sent.");
         if (err) {
           console.log('Error: ', err)
         }
+        console.log("Message sent.");
       })
     }
   })
