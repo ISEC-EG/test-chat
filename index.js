@@ -68,12 +68,11 @@ app.post("/bot/:botid", (req, res) => {
         "text": reply_text
       }
 
-      cbclient.tiledeskClient.sendMessage('11', msg, function (err, response, resbody) {
-        console.log('response', response);
-        console.log('resbody', resbody);
+      cbclient.tiledeskClient.sendMessage(dialogflow_session_id, msg, function (err, response) {
         if (err) {
           console.log('Error: ', err)
         }
+        console.log('response', response);
         console.log("Message sent.");
       })
     }
