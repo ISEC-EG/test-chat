@@ -97,12 +97,13 @@ app.post("/microlang-bot/:botid", (req, res) => {
   const credentials = JSON.parse(process.env[botid])
   runDialogflowQuery(tdclient.text, dialogflow_session_id, lang, credentials)
   .then(function(result) {
-    console.log("query result: ", JSON.stringify(result))
-    console.log("is fallback:", result.intent.isFallback)
-    console.log("confidence:", result.intentDetectionConfidence)
+    // console.log("query result: ", JSON.stringify(result))
+    // console.log("is fallback:", result.intent.isFallback)
+    // console.log("confidence:", result.intentDetectionConfidence)
     // intentDetectionConfidence
     if(res.statusCode === 200) {
       const reply_text = result['fulfillmentText'];
+      console.log('reply_text: ', reply_text)
       const parsed_reply = TiledeskChatbotUtil.parseReply(reply_text);
       var msg = parsed_reply.message;
       // NOTE: you can also use parts of the parsed message, like this
