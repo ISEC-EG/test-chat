@@ -103,21 +103,20 @@ app.post("/microlang-bot/:botid", (req, res) => {
       // intentDetectionConfidence
       if (res.statusCode === 200) {
         const reply_text = result['fulfillmentText'];
+        // const parsed_reply = TiledeskChatbotUtil.parseReply(reply_text);
+
         let reply = {
           "message": {}
         }
-        reply.message[TiledeskChatbotUtil.TEXT_KEY] = text
+        reply.message[TiledeskChatbotUtil.TEXT_KEY] = reply_text
         reply.message[TiledeskChatbotUtil.TYPE_KEY] = TiledeskChatbotUtil.TYPE_TEXT
 
         let parsed;
-        // parsed = TiledeskChatbotUtil.parse_legacy_image(text, reply);
         parsed = TiledeskChatbotUtil.parse_tdImage(parsed.text, parsed.reply);
         text = parsed.text;
         reply = parsed.reply;
 
-
-        // const parsed_reply = TiledeskChatbotUtil.parseReply(reply_text);
-        console.log('reply_text: ', parsed_reply)
+        console.log('reply_text: ', reply)
         var msg = reply.message;
         console.log('MSG: ', msg)
         // NOTE: you can also use parts of the parsed message, like this
