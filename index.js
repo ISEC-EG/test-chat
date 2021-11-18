@@ -108,11 +108,13 @@ app.post("/microlang-bot/:botid", (req, res) => {
         let reply = {
           "message": {}
         }
-        reply.message[TiledeskChatbotUtil.TEXT_KEY] = reply_text
-        reply.message[TiledeskChatbotUtil.TYPE_KEY] = TiledeskChatbotUtil.TYPE_TEXT
+        reply.message[TiledeskChatbotUtil.TEXT_KEY] = reply_text;
+        reply.message[TiledeskChatbotUtil.TYPE_KEY] = TiledeskChatbotUtil.TYPE_TEXT;
 
         let parsed;
-        parsed = TiledeskChatbotUtil.parse_tdImage(parsed.text, parsed.reply);
+        console.log('HERER')
+        parsed = TiledeskChatbotUtil.parse_tdImage(reply_text, reply);
+        console.log('HERER', parsed)
         text = parsed.text;
         reply = parsed.reply;
 
