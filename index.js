@@ -103,9 +103,9 @@ app.post("/microlang-bot/:botid", (req, res) => {
     // intentDetectionConfidence
     if(res.statusCode === 200) {
       const reply_text = result['fulfillmentText'];
-      console.log('reply_text: ', reply_text)
       // const parsed_reply = TiledeskChatbotUtil.parseReply(reply_text);
       const parsed_reply = TiledeskChatbotUtil.parse_tdImage(reply_text, tdclient);
+      console.log('reply_text: ', parsed_reply)
       var msg = parsed_reply.message;
       // NOTE: you can also use parts of the parsed message, like this
       // var reply = {
@@ -118,7 +118,7 @@ app.post("/microlang-bot/:botid", (req, res) => {
       tdclient.sendMessage(msg, function (err) {
         console.log("Message", msg, "sent.");
         if (err) {
-          console.log('Error: ', err);
+          console.log('Error: ', err.message);
         }
       })
     }
