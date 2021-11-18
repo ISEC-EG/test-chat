@@ -113,7 +113,7 @@ app.post("/microlang-bot/:botid", (req, res) => {
       //   "metadata": msg.metadata,
       //   "senderFullname": tdclient.botName
       // }
-      tdclient.sendMessage(dialogflow_session_id, msg, function (err) {
+      tdclient.sendMessage(msg, function (err) {
         console.log("Message", msg, "sent.");
         if (err) {
           console.log('Error: ', err);
